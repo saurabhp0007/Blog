@@ -1,8 +1,8 @@
-# React + Vite
+# React Blog app 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+to run this app 
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+npm install 
+npm run dev ,for locally 
+this application is deployed as well 
+look at here https://blog-gold-gamma-44.vercel.app/
