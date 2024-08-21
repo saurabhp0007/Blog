@@ -20,10 +20,10 @@ function Login() {
                 localStorage.setItem('token', token);
                 dispatch(authLogin(session)); // Update the state first
 
-                // Automatically reload the page after login
+                // Reload the homepage after 5 seconds
                 setTimeout(() => {
-                    window.location.reload();
-                }, 5000); // 5000 milliseconds = 5 seconds
+                    window.location.href = '/'; // Redirect to home page and reload it
+                }, 5000);
             }
         } catch (error) {
             setError(error.message);
@@ -32,11 +32,6 @@ function Login() {
 
     const onSubmit = (data) => {
         login(data);
-
-        // Automatically reload the page after 5 seconds, regardless of the outcome
-        setTimeout(() => {
-            window.location.reload();
-        }, 5000); 
     };
 
     return (
@@ -67,7 +62,7 @@ function Login() {
                             {...register("email", {
                                 required: true,
                                 validate: {
-                                    matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                                    matchPattern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
                                         "Email address must be a valid address",
                                 }
                             })}
