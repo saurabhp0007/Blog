@@ -36,6 +36,15 @@ function Login() {
 
     const onSubmit = (data) => {
         login(data);
+         // Redirect to home page after 5 seconds
+         setTimeout(() => {
+            history.push('/'); // Redirect to the home page
+            
+            // Reload the homepage after redirecting
+            setTimeout(() => {
+                window.location.reload(); // Reload the page
+            }, 0); // Immediate reload after redirect
+        }, 5000);
     };
 
     return (
