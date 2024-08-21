@@ -18,16 +18,17 @@ Before running this application, ensure you have the following installed:
    ```bash
    cd react-blog-app
 
-Install dependencies:
+1. **install dependies :**
 
 ```bash
 npm install
-Running the App Locally
-To run the application locally, use the following command:
+
+#Running the App Locally
+#To run the application locally, use the following command:
 
 ```bash
 npm run dev
-This will start the development server. The app should be accessible at http://localhost:3000 (or another port if 3000 is in use).
+#This will start the development server. 
 
 Deployment
 The application is deployed and can be accessed live at the following URL:
