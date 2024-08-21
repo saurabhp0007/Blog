@@ -11,7 +11,6 @@ function Login() {
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState('');
-
     const login = async (data) => {
         setError('');
         try {
@@ -20,10 +19,15 @@ function Login() {
                 localStorage.setItem('token', token);
                 dispatch(authLogin(session)); // Update the state first
 
-                // Reload the homepage after 5 seconds
+                // Redirect to home page after 5 seconds
                 setTimeout(() => {
-                    window.location.href = '/'; // Redirect to home page and reload it
-                }, 5000);
+                    history.push('/'); // Redirect to the home page
+
+                    // Reload the homepage after redirecting
+                    setTimeout(() => {
+                        window.location.reload(); // Reload the page
+                    }, 0); // Immediate reload after redirect
+                }, 5000); // 5 seconds delay before redirecting
             }
         } catch (error) {
             setError(error.message);
