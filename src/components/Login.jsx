@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -11,23 +11,19 @@ function Login() {
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState('');
+    const [isLoginSuccess, setIsLoginSuccess] = useState(false);
     const login = async (data) => {
         setError('');
         try {
-            const { session, token } = await authService.login(data);
+            const session = await authService.login(data); // Get the session object from Appwrite
             if (session) {
+                const token = session.$id; // Assuming session ID is the token
                 localStorage.setItem('token', token);
-                dispatch(authLogin(session)); // Update the state first
-
-                // Redirect to home page after 5 seconds
+                dispatch(authLogin(session)); // Update the Redux state with the session
+                history.push('/'); // Redirect immediately after login
                 setTimeout(() => {
-                    history.push('/'); // Redirect to the home page
-
-                    // Reload the homepage after redirecting
-                    setTimeout(() => {
-                        window.location.reload(); // Reload the page
-                    }, 0); // Immediate reload after redirect
-                }, 5000); // 5 seconds delay before redirecting
+                    window.location.reload(); // Reload the homepage after 5 seconds
+                }, 5000); // 5 seconds delay
             }
         } catch (error) {
             setError(error.message);
@@ -36,15 +32,6 @@ function Login() {
 
     const onSubmit = (data) => {
         login(data);
-         // Redirect to home page after 5 seconds
-         setTimeout(() => {
-            history.push('/'); // Redirect to the home page
-            
-            // Reload the homepage after redirecting
-            setTimeout(() => {
-                window.location.reload(); // Reload the page
-            }, 0); // Immediate reload after redirect
-        }, 5000);
     };
 
     return (
