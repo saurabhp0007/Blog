@@ -18,19 +18,8 @@ Before running this application, ensure you have the following installed:
    ```bash
    cd react-blog-app
 
-1. **install dependies :**
+2. **install dependies :**
 
 ```bash
 npm install
-
-#Running the App Locally
-#To run the application locally, use the following command:
-
-```bash
 npm run dev
-#This will start the development server. 
-
-Deployment
-The application is deployed and can be accessed live at the following URL:
-
-https://blog-gold-gamma-44.vercel.app/
